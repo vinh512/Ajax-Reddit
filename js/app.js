@@ -1,30 +1,29 @@
-/* - So we want the reddit page to load up new upon opening the page
-     - if user wants to select which topic to load, we allow them
-       - and call ajax request with particular topic
-       - iterate & update html with new data */
-
-$(document).ready(function(){
+$(document).ready(function() {
   var topic = "top";
   ajaxRequest(topic);
 
   $('#nav li a').on('click', function() {
     topic = ($(this).text() === 'promoted') ? 'ads' : $(this).text(); //special case for 'promoted' selection
-    $('#main-content').empty(); //clears the page
-    ajaxRequest(topic); //call function to make AJAX request
+    $('#main-content').empty();
+    ajaxRequest(topic);
   });
 
-  //Makes AJAX request & calls populate function upon success
+  // Makes AJAX request & calls populate function upon success
   function ajaxRequest(topic) {
     var request = $.ajax({
       url: 'https://www.reddit.com/' + topic + '/.json',
       method: 'GET',
-      beforeSend: function(){   /*loading gif*/ }
+      beforeSend: function() {
+        $('#load').show().html("<img src='images/Loading.gif' />");
+      }
     });
     request.done(function(response){
-      populateContent(response); //populate content
+      $('#load').hide();
+      populateContent(response); //populate page with content
     });
   }
 
+  // Sets up the structure of a posting and populates the page with content
   function populateContent(response) {
     var results = response.data.children;
     var brokenImage, thumbNail;
@@ -51,16 +50,25 @@ $(document).ready(function(){
       // Forms the html statement that gets added into the DOM
       var elements = ['<li class=\"contentItem\">',
                         '<div class="row">',
+                          // Displays the score
                           '<div class="col-md-1">',
-                            '<h4>' + results[i].data.score + '</h4>',
+                            '<p class="center">' + "Score:" + '<p>',
+                            '<h4 class="center">' + results[i].data.score + '</h4>',
                           '</div>',
+                          // Displays the correct thumbnail
                           '<div class="col-md-3">',
-                            '<img class=\"thumbnails\" src=\"' + (brokenImage ? 'images/RedditSnoo.png' : thumbNail) + '\"/>',
+                            '<a href=' + results[i].data.url + '>',
+                              '<img class=\"thumbnails\" src=\"' + (brokenImage ? 'images/RedditSnoo.png' : thumbNail) + '\"/>',
+                            '</a>',
                           '</div>',
+                          // Displays the link title
                           '<div class="col-md-8">',
-                            '<h4 class=\"contentTitle\">' + title + '<h4/>',
+                            '<a href=' + "https://www.reddit.com" + results[i].data.permalink + '\"' + '>',
+                              '<h4 class=\"contentTitle\">' + title + '<h4/>',
+                            '</a>',
                           '</div>',
                         '</div>',
+                        '<hr/>',
                       '</li>'
                     ].join('');
       $('#main-content').append(elements);

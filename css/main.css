@@ -2,12 +2,17 @@ nav ul li {
   display: inline-block;
   list-style-type: none;
   margin-right: 25px;
-  margin-top: 30px;
+  margin-top: 20px;
   font-size: 2em;
 }
 
 li {
   list-style-type: none;
+}
+
+.smallPic {
+  width: 40px;
+  height: 55px;
 }
 
 .contentItem {
@@ -22,4 +27,8 @@ li {
   max-width: 125px;
   max-height: 125px;
   /*display: cover;*/
+}
+
+.center {
+  text-align: center;
 }

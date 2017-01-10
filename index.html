@@ -2,38 +2,41 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Ajaxify Reddit</title>
+    <title>Simple Reddit</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media="screen" title="no title">
     <link rel="stylesheet" href="css/main.css" media="screen" title="no title">
   </head>
   <body>
-<img src='./images/RedditSnoo.png' height="50" width="40"/>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <h1>Ajaxify Reddit</h1>
+    <a href="https://reddit.com">
+      <img class="smallPic" src='./images/RedditSnoo.png' />
+    </a>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <h1>Simple Reddit</h1>
+          </div>
+          <!-- Navigational Links -->
+          <nav class="col-md-9">
+            <ul id='nav'>
+              <li><a href="#">new</a></li>
+              <li><a href="#">rising</a></li>
+              <li><a href="#">controversial</a></li>
+              <li><a href="#">top</a></li>
+              <li><a href="#">gilded</a></li>
+              <li><a href="#">promoted</a></li>
+            </ul>
+          </nav>
+        </div>
+        <hr/>
+        <!-- Content body -->
+        <div id="main">
+          <div class="center" id="load"></div>
+          <ul id="main-content">
+            <!-- Content will be populated here -->
+          <ul>
+        </div>
       </div>
-      <nav class="col-md-9">
-        <ul id='nav'>
-          <li><a href="#">new</a></li>
-          <li><a href="#">rising</a></li>
-          <li><a href="#">controversial</a></li>
-          <li><a href="#">top</a></li>
-          <li><a href="#">gilded</a></li>
-          <li><a href="#">wiki</a></li>
-          <li><a href="#">promoted</a></li>
-        </ul>
-      </nav>
-    </div>
-    <hr>
-
-    <div id="main">
-      <ul id="main-content">
-      <ul>
-    </div>
-  </div>
-
-  <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-  <script src="js/app.js" charset="utf-8"></script>
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="js/app.js" charset="utf-8"></script>
   </body>
 </html>
