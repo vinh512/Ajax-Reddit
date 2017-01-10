@@ -1,0 +1,25 @@
+nav ul li {
+  display: inline-block;
+  list-style-type: none;
+  margin-right: 25px;
+  margin-top: 30px;
+  font-size: 2em;
+}
+
+li {
+  list-style-type: none;
+}
+
+.contentItem {
+  padding: 17px;
+}
+
+.contentTitle {
+  margin-left: -100px;
+}
+
+.thumbnails {
+  max-width: 125px;
+  max-height: 125px;
+  /*display: cover;*/
+}
