@@ -1,9 +1,18 @@
 $(document).ready(function() {
   var topic = "top";
-  ajaxRequest(topic);
+  ajaxRequest(topic); // Loads page with top posts
 
+  // Toggles between dark or light themes
+  $('button').on('click', function() {
+    $('body').toggleClass('dark');
+    $('a').toggleClass('lightText');
+    ($(this).text() === 'dark') ? $(this).text('light') : $(this).text('dark')
+    $(this).toggleClass('btnLight');
+  });
+
+  // Makes an AJAX call based on selected nav link
   $('#nav li a').on('click', function() {
-    topic = ($(this).text() === 'promoted') ? 'ads' : $(this).text(); //special case for 'promoted' selection
+    topic = ($(this).text() === 'promoted') ? 'ads' : $(this).text(); // the 'promoted' endpoint is 'ads'
     $('#main-content').empty();
     ajaxRequest(topic);
   });
@@ -14,11 +23,11 @@ $(document).ready(function() {
       url: 'https://www.reddit.com/' + topic + '/.json',
       method: 'GET',
       beforeSend: function() {
-        $('#load').show().html("<img src='images/Loading.gif' />");
+        $('#loadIcon').show().html("<img class='loading' src='images/Loading.gif' />");
       }
     });
     request.done(function(response){
-      $('#load').hide();
+      $('#loadIcon').hide();
       populateContent(response); //populate page with content
     });
   }
@@ -31,9 +40,7 @@ $(document).ready(function() {
     for (var i=0; i<results.length; i++) {
       thumbNail = results[i].data.thumbnail;
 
-      /* If the Object has a thumbnail property, check to see if it has an actual thumbnail
-       and apply a boolean value for the ternary. The indexOf method will return a '-1' if the
-       argument is not found. Continuing with statement, else it has a brokenImage */
+      // Replaces Snoo with missing thumbnails
       if (results[i].data.hasOwnProperty('thumbnail')) {
         brokenImage = (results[i].data.thumbnail.indexOf('http') === -1);
       } else {
