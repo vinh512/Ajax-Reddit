@@ -1,3 +1,7 @@
+hr {
+  border-color: #cccccc;
+}
+
 ul {
   padding-left: 10px;
 }
@@ -11,23 +15,22 @@ nav ul li {
   list-style-type: none;
   margin-right: 25px;
   margin-top: 20px;
-  font-size: 2em;
+  font-size: 1.75em;
 }
 
 button {
   border-radius: 5px;
   border: none;
-  /*width: ;*/
 }
 
 button:focus {
   outline: none;
   outline: 0;
- }
+}
 
- button:hover {
+button:hover {
    background-color: #66b5ff;
- }
+}
 
 .smallPic {
   width: 40px;
@@ -62,8 +65,12 @@ button:focus {
   color: #d9d9d9;
 }
 
-.lightText {
-  color: #d9d9d9;
+.dark a {
+  color: #cccccc;
+}
+
+.light a {
+  color: #4078c0;
 }
 
 .btnLight {

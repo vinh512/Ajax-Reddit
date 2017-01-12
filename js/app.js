@@ -4,9 +4,9 @@ $(document).ready(function() {
 
   // Toggles between dark or light themes
   $('button').on('click', function() {
+    $('body').toggleClass('light');
     $('body').toggleClass('dark');
-    $('a').toggleClass('lightText');
-    ($(this).text() === 'dark') ? $(this).text('light') : $(this).text('dark')
+    ($(this).text() === 'dark theme') ? $(this).text('light theme') : $(this).text('dark theme')
     $(this).toggleClass('btnLight');
   });
 
@@ -40,7 +40,7 @@ $(document).ready(function() {
     for (var i=0; i<results.length; i++) {
       thumbNail = results[i].data.thumbnail;
 
-      // Replaces Snoo with missing thumbnails
+      // Replaces Snoo pic with missing thumbnails
       if (results[i].data.hasOwnProperty('thumbnail')) {
         brokenImage = (results[i].data.thumbnail.indexOf('http') === -1);
       } else {
@@ -54,7 +54,7 @@ $(document).ready(function() {
         title = results[i].data.link_title;
       }
 
-      // Forms the html statement that gets added into the DOM
+      // Constructs the html statement that gets appended into the DOM
       var elements = ['<li class=\"contentItem\">',
                         '<div class="row">',
                           // Displays the score
